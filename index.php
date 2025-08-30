@@ -1,26 +1,23 @@
 <?php
-declare(strict_types= 1);
 
-$completed = true;
-$score = 75;
-$price = 0.5;
-$greeting = "Hello";
+// Heredoc
 
-$companies = [];
-$array = [1, 2, 3, -9.2, 'A', true];
+$x = 1;
+$y = 2;
 
-function sum(int $x, int $y) {
-    var_dump($x, $y);
-    echo '<br />';
-    return $x + $y;
-}
+$text = <<<TEXT
+Line {$x}
+Line {$y}
+TEXT;
 
-$sum = sum(2,3);
+echo nl2br($text);
 
-$x = (int) '5';
+// Nowdoc
 
-echo $x;
-var_dump($x);
-echo '<br/>';
+$text = <<<'TEXT'
+Line {$x}
+Line {$y}
+TEXT;
 
-echo $sum;
+echo '<br />';
+echo nl2br($text);
