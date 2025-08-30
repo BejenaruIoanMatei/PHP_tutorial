@@ -1,11 +1,26 @@
 <?php
+declare(strict_types= 1);
 
-$name = "Mat";
+$completed = true;
+$score = 75;
+$price = 0.5;
+$greeting = "Hello";
 
-$x = "1";
-$y = &$x;
+$companies = [];
+$array = [1, 2, 3, -9.2, 'A', true];
 
-$x = 3;
+function sum(int $x, int $y) {
+    var_dump($x, $y);
+    echo '<br />';
+    return $x + $y;
+}
 
-$firstname = "Mate";
-echo "Hello {$firstname}";
+$sum = sum(2,3);
+
+$x = (int) '5';
+
+echo $x;
+var_dump($x);
+echo '<br/>';
+
+echo $sum;
