@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-    <?php 
+<?php 
         $books = [
             [
                 'name' => 'Book 1',
@@ -43,31 +34,55 @@
 
             return $filteredBooks;
         }
-    ?>
-    <ul>
-        <?php foreach ($books as $book) : ?>
-            <?php if ($book['author'] === 'Author Book 1') : ?>
-            <h1>
-                <li>
-                    <?= $book['name'] ?> by <?= $book['author'] ?>
-                    <a href="<?= $book['url'] ?>">
-                    <br>
-                    Buy <?= $book['name'] ?>
-                    Here !
-                </a>
-                </li>
-            </h1>
-            <?php endif; ?>
-        <?php endforeach; ?>
-    </ul>
 
-    <p>
-        <?php
-            foreach (filterByAuthor($books, 'Author Book 1') as $element) :
-                echo "<h1>{$element['author']}</h1>";
-            endforeach;
-        ?>
-    </p>
+        $filterByAuthor = function (array $books, string $author): array 
+        {
+            $filteredBooks = [];
 
-</body>
-</html>
+            foreach ($books as $book) {
+                if ($book['author'] === $author) {
+                    $filteredBooks[] = $book;
+                }
+            }
+
+            return $filteredBooks;
+        };
+
+        $filteredBooks = filterByAuthor($books, 'Author Book 1');
+
+
+        function filter( $items,  $key, $value): array {
+            $filteredItems = [];
+
+            foreach ($items as $item) {
+                if ($item[$key] === $value) {
+                    $filteredItems[] = $item;
+                }
+            }
+
+            return $filteredItems;
+        }
+
+        function filterAdvanced($items, $fn) 
+        {
+            $filteredItems = [];
+
+            foreach ($items as $item) {
+                if ($fn($item)) {
+                    $filteredItems[] = $item;
+                }
+            }
+
+            return $filteredItems;
+        }
+
+        $resultfiltered = filterAdvanced($books, function($book){
+            return $book['releaseYear'] >= 2000;
+        });
+
+
+        $res = array_filter($books, function($book){
+            return $book['releaseYear'] < 2000;
+        });
+
+require "index.view.php";
