@@ -1,11 +1,13 @@
-<?php require "partials/head.php"; ?>
-<?php require "partials/nav.php"; ?>
-<?php require "partials/banner.php"; ?>
+<?php require(BASE_PATH . 'laracasts/views/partials/head.php') ?>
+<?php require(BASE_PATH . 'laracasts/views/partials/nav.php') ?>
+<?php require(BASE_PATH . 'laracasts/views/partials/banner.php') ?>
+
 
 <main>
   <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    Welcome, About
+    <p>Now you are on the About Page.</p>
   </div>
 </main>
 
-<?php require "partials/footer.php";
+
+<?php require(BASE_PATH . 'laracasts/views/partials/footer.php') ?>

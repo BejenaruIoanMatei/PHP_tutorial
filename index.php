@@ -1,50 +1,35 @@
-<?php
+<?php 
 
-// Arrays
+require __DIR__ . '/laracasts/functions.php';
 
-$programmingLanguages = [
-    'php' => [
-        'creator'=> 'mr saxobeat',
-        'extension'=> true,
-        'versions'=>[
-            ['version' => '8','releaseDate'=> 'Nov 26, 2023'],
-            ['version'=> '7,4','releaseDate'=> 'Dec 21, 2019'],
-        ]
-    ]
+const PROJECT_BASE_URI = '/php_tutorial';
+
+$routes = [
+    '/' => 'laracasts/controllers/index.php',
+    '/about' => 'laracasts/controllers/about.php',
+    '/contact' => 'laracasts/controllers/contact.php',
 ];
 
-echo '<pre>';
-print_r($programmingLanguages);
-echo '</pre>';
+function routeToController($uri, $routes) {
+    if (array_key_exists($uri, $routes)) {
+        require BASE_PATH . $routes[$uri];
+    } else {
+        abort();
+    }
+}
 
-$programmingLanguages[] = '1.15';
+function abort($code = 404) {
+    http_response_code($code);
+    view("{$code}.view.php", [
+        'heading' => 'Sorry. Page Not Found.'
+    ]);
+    die();
+}
 
-echo '<pre>';
-print_r($programmingLanguages);
-echo '</pre>';
+// A more robust way to determine the route from the URI
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+$route = str_replace(PROJECT_BASE_URI, '', $uri);
+$route = ($route === '' || $route === '/') ? '/' : rtrim($route, '/');
 
-echo $programmingLanguages['php']['extension'];
+routeToController($route, $routes);
 
-$array = [1, 2, 3];
-
-echo array_pop($array);
-
-echo array_shift($array);
-
-echo '<pre>';
-print_r($array);
-echo '</pre>';
-
-unset($array[0]);
-
-echo '<pre>';
-print_r($array);
-echo '</pre>';
-
-$x = 5;
-
-var_dump((array)$x);
-
-$x = (array) $x;
-
-var_dump(array_key_exists('0', $x));
