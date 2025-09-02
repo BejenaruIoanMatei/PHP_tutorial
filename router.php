@@ -6,6 +6,8 @@ $routes = [
     '/' => 'laracasts/controllers/index.php',
     '/about' => 'laracasts/controllers/about.php',
     '/contact' => 'laracasts/controllers/contact.php',
+    '/notes' => 'laracasts/controllers/notes.php',
+    '/note' => 'laracasts/controllers/note.php',
 ];
 
 function routeToController($uri, $routes) {

@@ -13,6 +13,8 @@
                             class="<?= urlIs('/php_tutorial/') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md px-3 py-2 text-sm font-medium">Home</a>
                         <a href="/php_tutorial/about"
                             class="<?= urlIs('/php_tutorial/about') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">About</a>
+                        <a href="/php_tutorial/notes"
+                            class="<?= urlIs('/php_tutorial/notes') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Notes</a>
                         <a href="/php_tutorial/contact"
                             class="<?= urlIs('/php_tutorial/contact') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Contact</a>
                     </div>
