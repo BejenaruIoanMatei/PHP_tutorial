@@ -1,19 +1,11 @@
 <?php 
 
 require __DIR__ . '/laracasts/functions.php';
+require "Database.php";
+
+$db = new Database();
+$posts = $db->query()->fetchAll(PDO::FETCH_ASSOC);
 
 // require 'router.php';
 
-// PDO
-$dsn = "mysql:host=localhost;port=3306;dbname=myapp;charset=utf8mb4";
-
-$pdo = new PDO($dsn, 'root');
-
-$statement = $pdo->prepare("select * from posts");
-$statement->execute();
-
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($posts as $post) {
-    echo "<li>" . $post["title"] . "</li>";
-}
+dd($posts);
