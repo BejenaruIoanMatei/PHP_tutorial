@@ -4,7 +4,11 @@ ini_set('display_errors', 1);
 
 const BASE_PATH = __DIR__ . '/../';
 function dd($value) {
-    die(var_dump($value));
+    echo '<pre>';
+    var_dump($value);
+    echo '</pre>';
+
+    die();
 }
 
 function urlIs($value): bool {
