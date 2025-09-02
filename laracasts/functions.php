@@ -17,7 +17,7 @@ function view($path, $attributes = []) {
     $fullPath = BASE_PATH . 'laracasts/views/' . $path;
     
     if (!file_exists($fullPath)) {
-        echo "EROARE: View-ul nu există!<br>";
+        echo "EROARE: This view does not exist.<br>";
         exit;
     }
     
