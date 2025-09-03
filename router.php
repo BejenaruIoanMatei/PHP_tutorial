@@ -18,13 +18,26 @@ function routeToController($uri, $routes) {
     }
 }
 
+
 function abort($code = 404) {
     http_response_code($code);
+
+    switch ($code) {
+        case 403:
+            $heading = 'Unauthorized Access';
+            break;
+        default:
+            $heading = 'Sorry. Page Not Found.';
+            break;
+    }
+
     view("{$code}.view.php", [
-        'heading' => 'Sorry. Page Not Found.'
+        'heading' => $heading
     ]);
+
     die();
 }
+
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $route = str_replace(PROJECT_BASE_URI, '', $uri);
