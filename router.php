@@ -2,13 +2,7 @@
 
 const PROJECT_BASE_URI = '/php_tutorial';
 
-$routes = [
-    '/' => 'laracasts/controllers/index.php',
-    '/about' => 'laracasts/controllers/about.php',
-    '/contact' => 'laracasts/controllers/contact.php',
-    '/notes' => 'laracasts/controllers/notes.php',
-    '/note' => 'laracasts/controllers/note.php',
-];
+$routes = require 'routes.php';
 
 function routeToController($uri, $routes) {
     if (array_key_exists($uri, $routes)) {
