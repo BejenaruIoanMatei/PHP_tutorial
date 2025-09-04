@@ -1,5 +1,7 @@
 <?php
 
+require 'Validator.php';
+
 $config = require BASE_PATH . 'config.php';
 $db = new Database($config['database']);
 
@@ -8,14 +10,9 @@ $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') 
 {
 
-    if (strlen($_POST['body']) === 0)
+    if (! Validator::string(value: $_POST['body'], min: 1, max: 1000))
     {
-        $errors['body'] = 'A body is required.';
-    }
-
-    if (strlen($_POST['body']) > 1000)
-    {
-        $errors['body'] = 'The body can\'t be more than 1,000 characters.';
+        $errors['body'] = 'A body of no more than 1,000 characters is required.';
     }
 
     if (empty($errors))
